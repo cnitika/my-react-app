@@ -25,9 +25,11 @@ pipeline {
             }
         }
 
-        stage('Show Output') {
+        stage('Deploy') {
             steps {
-                sh 'ls -la dist'
+                sh 'rm -rf /var/www/site/*'
+                sh 'cp -r dist/* /var/www/site/'
+                sh 'ls -la /var/www/site'
             }
         }
     }
