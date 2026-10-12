@@ -25,13 +25,11 @@ pipeline {
             }
         }
 
-        stage('Deploy to Remote Server') {
+        stage('Deploy') {
             steps {
-                echo 'Copying build files to remote-server container...'
-                sh 'docker exec remote-server mkdir -p /var/www/html'
-                sh 'docker exec remote-server rm -rf /var/www/html/*'
-                sh 'docker cp dist/. remote-server:/var/www/html/'
-                echo 'Deployment to remote-server successful!'
+                sh 'rm -rf /var/www/site/*'
+                sh 'cp -r dist/* /var/www/site/'
+                sh 'ls -la /var/www/site'
             }
         }
     }
