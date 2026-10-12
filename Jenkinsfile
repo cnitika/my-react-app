@@ -27,7 +27,7 @@ pipeline {
 
         stage('Deploy to Remote Server') {
             steps {
-                echo 'Copying build files to remote-server container...'
+                echo 'Copying build files to remote-server containers...'
                 
                 // Ensure target directory exists in remote server
                 sh 'docker exec remote-server mkdir -p /var/www/html'
